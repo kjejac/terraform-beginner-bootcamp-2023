@@ -146,3 +146,44 @@ https://www.gitpod.io/docs/configure/projects/environment-variables#ways-of-sett
 You can also set env vars in the `.gitpod.yml` but this can only contain non-sensitive env vars!
 https://www.gitpod.io/docs/configure/projects/environment-variables#project-specific-environment-variables
 
+
+### AWS CLI installation
+
+AWS CLI is installed for this project via the bash script [`./bin/install_aws_cli`](./bin/install_aws_cli).
+
+[Getting started Install (AWS CLI)](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+[AWS CLI env vars](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-envvars.html)
+
+We can check if our AWS credentials is configured correctly by running the following AWS CLI command:
+```sh
+aws sts get-caller-identity
+```
+
+If it is succesful you should se a json payload return that looks like this:
+```json
+{
+    "UserId": "AIDASJA5RO4LIENX4BP4S",
+    "Account": "123456789012",
+    "Arn": "arn:aws:iam::123456789012:user/terraform-beginner-bootcamp"
+}
+```
+
+#### AWS credentials 
+_(this is better explained in local notes with pictures)_
+
+We'll need to generate AWS CLI credits from IAM User in order to use AWS CLI.
+
+log into [aws.amazon.com](https://aws.amazon.com)
+
+go to **`iam`**
+
+Create a **new user**
+
+Add user to a group / create a new group if necessary 
+**_Example group have global access, but is not necessary! This will be addressed later in the bootcamp._**
+
+**Create unique users, do not use the same user every time. This gives the option to lock down the permissions for each account.**
+
+To get _Access keys_ for the created user, click on the user and go to _Access Keys_, click on _Create access key_ and choose _Command Line Interface CLI_, Confirm and next/create.
+
+**Never commit this info!**
