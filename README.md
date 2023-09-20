@@ -187,3 +187,66 @@ Add user to a group / create a new group if necessary
 To get _Access keys_ for the created user, click on the user and go to _Access Keys_, click on _Create access key_ and choose _Command Line Interface CLI_, Confirm and next/create.
 
 **Never commit this info!**
+
+
+## Terraform Basic
+
+### Terraform Registry
+
+Terrform sources their providers and moudles from the Terraform registry which is located at [registry.terraform.io](https://registry.terraform.io/).
+
+- **Providers** is an interface to APIs that will allow you to create resources in Terraform 
+- **MOdules** are a way to make large amount of terraform code modular, portable and shareable 
+
+[](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string)
+
+### Terraform Console
+
+We can list out alle Terraform commands by using the command `terraform`
+
+#### Terraform Init
+
+At the start of a new terraform project we will run `terraform init` to download binaries for the terraform providers that we'll use in the project.
+
+[Terraform Provider; Random](https://registry.terraform.io/providers/hashicorp/random/latest)
+[Output from provider](https://developer.hashicorp.com/terraform/language/values/outputs)
+
+#### Terraform Plan
+
+`terraform plan` will generate out a changeset, about the state of our infrastructure and what will be changed.
+
+We can output this changeset ie. "plan" to be passed to an apply, but often you can just ignore outputting.
+
+#### Terraform Apply
+
+`terraform apply` will run a plan and pass the changeset to be executed by terraform. Apply should prompt yes or no. 
+
+If we want to automatically approve an apply we can provide the auto approve flag eg. `terraform apply --auto-approve`
+
+
+#### Terraform Output
+
+To get only the output use `terraform output`
+
+### Terraform lock files
+
+`.terraform.lock.hcl` contains the locked versioning for the providers or modules that should be used with this project. 
+
+The Terraform Lock File **should be committed** to the Version Control System (VSC) eg. Github.
+
+### Terraform statefiles
+The `.tfstate` file in Terraform contains the current state of your infrastructure. It keeps track of the resources that have been created, their attributes, and their dependencies. This file is crucial for Terraform to plan and execute changes to your infrastructure. It also serves as a lock to prevent concurrent modifications. Storing it securely and managing it properly is important for effective Terraform usage.
+
+In practice we don't fiddle with this file!
+
+**This file _should NOT be committed_ to the VSC**
+
+This file can contain sensetive data.
+
+If you lose this file, you lose knowing the state of your infrastructure.
+
+`.terraform.tfstate.backup` is the previous state file
+
+### Terraform directory
+
+`.terraform` directory contains binaries of terraform providers.
