@@ -223,6 +223,11 @@ We can output this changeset ie. "plan" to be passed to an apply, but often you 
 
 If we want to automatically approve an apply we can provide the auto approve flag eg. `terraform apply --auto-approve`
 
+#### Terraform destroy
+
+This will destroy resources.
+
+Auto approve flag can be used here to skip the 'yes' prompt eg. `terraform destroy --auto-approve`.
 
 #### Terraform Output
 
