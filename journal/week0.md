@@ -8,8 +8,8 @@
     + [Shebang considerations](#shebang-considerations)
     + [Execution considerations](#execution-considerations)
     + [Linux permissions considerations](#linux-permissions-considerations)
-- [Gitpod lifecycle](#github-lifecycle)
-- [Working with environment variables - env vars](#working-with-environment-variables-env-vars)
+- [Gitpod lifecycle](#gitpod-lifecycle)
+- [Working with environment variables](#working-with-environment-variables)
   * [env command](#env-command)
   * [Setting and Unsetting Env Vars](#setting-and-unsetting-env-vars)
   * [Printing Vars](#printing-vars)
@@ -127,7 +127,7 @@ We need to be careful when using the Init because it will not rerun if we restar
 https://www.gitpod.io/docs/configure/workspaces/tasks
 
 
-## Working with environment variables - env vars
+## Working with environment variables
 
 ### env command
 
