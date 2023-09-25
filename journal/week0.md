@@ -8,8 +8,8 @@
     + [Shebang considerations](#shebang-considerations)
     + [Execution considerations](#execution-considerations)
     + [Linux permissions considerations](#linux-permissions-considerations)
-- [Gitpod lifecycle - Before Init Commmand](#gitpod-lifecycle---before-init-commmand)
-- [Working with environment variables - env vars](#working-with-environment-variables---env-vars)
+- [Gitpod lifecycle](#github-lifecycle)
+- [Working with environment variables - env vars](#working-with-environment-variables-env-vars)
   * [env command](#env-command)
   * [Setting and Unsetting Env Vars](#setting-and-unsetting-env-vars)
   * [Printing Vars](#printing-vars)
@@ -120,7 +120,7 @@ https://en.wikipedia.org/wiki/Chmod
 
 Create a `./bin` directory for all scripts
 
-## Gitpod lifecycle - Before Init Commmand
+## Gitpod lifecycle
 
 We need to be careful when using the Init because it will not rerun if we restar an existing workspace
 
