@@ -8,15 +8,15 @@
     + [Shebang considerations](#shebang-considerations)
     + [Execution considerations](#execution-considerations)
     + [Linux permissions considerations](#linux-permissions-considerations)
-  * [Github lifecycle (Before, Init, Commmand)](#github-lifecycle--before--init--commmand-)
-  * [Working with environment variables (env vars)](#working-with-environment-variables--env-vars-)
-    + [env command](#env-command)
-    + [Setting and Unsetting Env Vars](#setting-and-unsetting-env-vars)
-    + [Printing Vars](#printing-vars)
-    + [Scoping of env vars](#scoping-of-env-vars)
-    + [Persisting env vars in Gitpod](#persisting-env-vars-in-gitpod)
-  * [AWS CLI installation](#aws-cli-installation)
-    + [AWS credentials](#aws-credentials)
+- [Gitpod lifecycle - Before Init Commmand](#gitpod-lifecycle---before-init-commmand)
+- [Working with environment variables - env vars](#working-with-environment-variables---env-vars)
+  * [env command](#env-command)
+  * [Setting and Unsetting Env Vars](#setting-and-unsetting-env-vars)
+  * [Printing Vars](#printing-vars)
+  * [Scoping of env vars](#scoping-of-env-vars)
+  * [Persisting env vars in Gitpod](#persisting-env-vars-in-gitpod)
+- [AWS CLI installation](#aws-cli-installation)
+  * [AWS credentials](#aws-credentials)
 - [Terraform Basic](#terraform-basic)
   * [Terraform Registry](#terraform-registry)
   * [Terraform Console](#terraform-console)
@@ -30,6 +30,7 @@
   * [Terraform directory](#terraform-directory)
 - [Issues Terraform Cloud Login and Gitpod Workspace.](#issues-terraform-cloud-login-and-gitpod-workspace)
 
+  
 ## Semantic versioning
 This project is going to utilize semantic versioning for its tagging.
 
@@ -119,22 +120,22 @@ https://en.wikipedia.org/wiki/Chmod
 
 Create a `./bin` directory for all scripts
 
-### Github lifecycle (Before, Init, Commmand)
+## Gitpod lifecycle - Before Init Commmand
 
 We need to be careful when using the Init because it will not rerun if we restar an existing workspace
 
 https://www.gitpod.io/docs/configure/workspaces/tasks
 
 
-### Working with environment variables (env vars)
+## Working with environment variables - env vars
 
-#### env command
+### env command
 
 We can list out all Environment vaiables (Env Vars) using the `env` command
 
 We can filter specific env vars using `grep` eg. `env | grep AWS_`
 
-#### Setting and Unsetting Env Vars
+### Setting and Unsetting Env Vars
 
 In the terminal we can set using `export HELLO='world`
 
@@ -154,17 +155,17 @@ HELLO='world'
 echo $HELLO
 ```
 
-#### Printing Vars
+### Printing Vars
 
 We can print an env var using `echo` eg. `echo $HELLO`
 
-#### Scoping of env vars
+### Scoping of env vars
 
 When you open up a new bash terminals in VSCode it will not be aware of env vars that you have set in another window.
 
 If you want to env vars to persist across all future bash terminals (gobal) that are open you need to set env vars in your bash profile eg. `.bash_profile`
 
-#### Persisting env vars in Gitpod
+### Persisting env vars in Gitpod
 
 We can persist env vars into Gitpod by storing them in Gitpod Secrets Storage.
 ```sh
@@ -177,7 +178,7 @@ You can also set env vars in the `.gitpod.yml` but this can only contain non-sen
 https://www.gitpod.io/docs/configure/projects/environment-variables#project-specific-environment-variables
 
 
-### AWS CLI installation
+## AWS CLI installation
 
 AWS CLI is installed for this project via the bash script [`./bin/install_aws_cli`](./bin/install_aws_cli).
 
@@ -198,7 +199,7 @@ If it is succesful you should se a json payload return that looks like this:
 }
 ```
 
-#### AWS credentials 
+### AWS credentials 
 _(this is better explained in local notes with pictures)_
 
 We'll need to generate AWS CLI credits from IAM User in order to use AWS CLI.
