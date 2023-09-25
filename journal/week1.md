@@ -1,8 +1,5 @@
 # Terraform Beginner Bootcamp 2023 - Week 1
 
-<<<<<<< HEAD
-
-
 ## Root Module Structure
 
 Our root module structure is as follows:
@@ -80,3 +77,26 @@ Terraform loads variables in the following order, with later sources taking prec
 
 [Variable Definition Precedence](https://developer.hashicorp.com/terraform/language/values/variables#variable-definition-precedence)
 
+
+## Dealing with Configuration Drift
+
+## What happens if we loose our state file?
+
+If you loose your statefile, you most likley have to tear down all your cloud infrastructure manually.
+
+You can use `terraform import` but it won't for all cloud resources. You need to check the terraform providers documentation for which resources support import.
+
+
+### Fix Missing Resources with Terraform Import
+
+`terraform import aws_s3_bucket.bucket bucket-name`
+`terraform import aws_s3_bucket.example zs1o9v2k9un1ksepm2eup740kzo6pc9n`
+
+[Terraform Import](https://developer.hashicorp.com/terraform/cli/import)
+[AWS S3 Bucket Import](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket#import)
+
+### Fix Manual Configuration
+
+If someone goes and delete or modifies cloud resources manually through ClickOps.
+
+If we run `terraform plan` is with attempt to put our infrastructure back into the expected state fixing Configuration Drift
