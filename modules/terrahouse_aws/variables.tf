@@ -16,3 +16,23 @@ variable "bucket_name" {
     error_message = "bucket_name must be between 3 and 63 characters long and can only contain lowercase letters, numbers, periods, and hyphens"
   }
 }
+
+variable "index_html_file_path" {
+  description = "Path to the index.html file"
+  type        = string
+
+  validation {
+    condition     = fileexists(var.index_html_file_path)
+    error_message = "The provided path is not a valid file path."
+  }
+}
+
+variable "error_html_file_path" {
+  description = "Path to the error.html file"
+  type        = string
+
+  validation {
+    condition     = fileexists(var.error_html_file_path)
+    error_message = "The provided path is not a valid file path."
+  }
+}
