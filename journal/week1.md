@@ -12,7 +12,7 @@ Our root module structure is as follows:
   |-- outputs.tf            - stores our outputs
   |-- README.md             - required for root modules
 ```
-[Standard Module Structure](https://developer.hashicorp.com/terraform/language/modules/develop/structure
+[Standard Module Structure](https://developer.hashicorp.com/terraform/language/modules/develop/structure)
 
 ## From TF Cloud to Local state
 
@@ -100,3 +100,45 @@ You can use `terraform import` but it won't for all cloud resources. You need to
 If someone goes and delete or modifies cloud resources manually through ClickOps.
 
 If we run `terraform plan` is with attempt to put our infrastructure back into the expected state fixing Configuration Drift
+
+## Fix using Terraform Refresh
+
+```sh
+terraform apply -refresh-only -auto-approve
+```
+[Command: Refresh](https://developer.hashicorp.com/terraform/cli/commands/refresh)
+
+## Terraform Modules
+
+### Terraform Module Structure
+
+It is recommended to place modules in a `modules` directory when locally developing modules but you can name it whatever you want.
+
+### Passing Input Variables
+
+Here we can pass input variables to our module. 
+The module has to declare the terraform variables in its own variables.tf
+
+```tf
+module "terrahouse_aws" {
+  source = "./modules/terrahouse_aws"
+  # env vars
+  user_uuid = var.user_uuid
+  bucket_name = var.bucket_name
+}
+```
+
+### Modules Sources
+
+Using the source we can import the module form various places eg: 
+- locally
+- Github
+- Terraform Registry
+
+```tf
+module "terrahouse_aws" {
+  source = "./modules/terrahouse_aws"
+}
+```
+
+[Terraform Module Sources](https://developer.hashicorp.com/terraform/language/modules/sources)
