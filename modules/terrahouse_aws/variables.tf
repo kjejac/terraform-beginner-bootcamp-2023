@@ -36,3 +36,13 @@ variable "error_html_file_path" {
     error_message = "The provided path is not a valid file path."
   }
 }
+
+variable "content_version" {
+  description = "Version number for the content. Should be a positiv integer starting at 1."
+  type        = number
+
+  validation {
+    condition     = var.content_version > 0 && floor(var.content_version) == var.content_version
+    error_message = "Content version must be a positive integer starting at 1."
+  }
+}
