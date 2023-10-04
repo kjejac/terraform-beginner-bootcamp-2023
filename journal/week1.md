@@ -1,39 +1,40 @@
 # Terraform Beginner Bootcamp 2023 - Week 1
 
-- [Fixing Tags](#fixing-tags)
-- [Root Module Structure](#root-module-structure)
-- [From TF Cloud to Local state](#from-tf-cloud-to-local-state)
-- [Terraform and Input Variables](#terraform-and-input-variables)
-  * [Terraform Cloud Variables](#terraform-cloud-variables)
-  * [Loading Terraform Input Variables](#loading-terraform-input-variables)
-    + [var flag](#var-flag)
-    + [var-file flag](#var-file-flag)
-    + [terraform.tfvars](#terraformtfvars)
-    + [auto.tfvars](#autotfvars)
-    + [Order of terraform variables](#order-of-terraform-variables)
-- [Dealing with Configuration Drift](#dealing-with-configuration-drift)
-- [What happens if we loose our state file?](#what-happens-if-we-loose-our-state-file-)
-  * [Fix Missing Resources with Terraform Import](#fix-missing-resources-with-terraform-import)
-  * [Fix Manual Configuration](#fix-manual-configuration)
-- [Fix using Terraform Refresh](#fix-using-terraform-refresh)
-- [Terraform Modules](#terraform-modules)
-  * [Terraform Module Structure](#terraform-module-structure)
-  * [Passing Input Variables](#passing-input-variables)
-  * [Modules Sources](#modules-sources)
-- [Consideration when using ChatGPT to write Terraform](#consideration-when-using-chatgpt-to-write-terraform)
-- [Working with Files in Terraform](#working-with-files-in-terraform)
-  * [Fileexist Function](#fileexist-function)
-  * [Filemd5](#filemd5)
-  * [Path Variable](#path-variable)
-- [Terraform Locals](#terraform-locals)
-  * [Terraform Data Sources](#terraform-data-sources)
-- [Working with JSON](#working-with-json)
-  * [Changing the Lifecycle of Resources](#changing-the-lifecycle-of-resources)
-- [Terraform Data](#terraform-data)
-- [Provisioners](#provisioners)
-  * [Local-exec](#local-exec)
-  * [Remote-exec](#remote-exec)
-- [For Each Expressions](#for-each-expressions)
+- [Terraform Beginner Bootcamp 2023 - Week 1](#terraform-beginner-bootcamp-2023---week-1)
+  - [Fixing Tags](#fixing-tags)
+  - [Root Module Structure](#root-module-structure)
+  - [From TF Cloud to Local state](#from-tf-cloud-to-local-state)
+  - [Terraform and Input Variables](#terraform-and-input-variables)
+    - [Terraform Cloud Variables](#terraform-cloud-variables)
+    - [Loading Terraform Input Variables](#loading-terraform-input-variables)
+      - [var flag](#var-flag)
+      - [var-file flag](#var-file-flag)
+      - [terraform.tfvars](#terraformtfvars)
+      - [auto.tfvars](#autotfvars)
+      - [Order of terraform variables](#order-of-terraform-variables)
+  - [Dealing with Configuration Drift](#dealing-with-configuration-drift)
+  - [What happens if we loose our state file?](#what-happens-if-we-loose-our-state-file)
+    - [Fix Missing Resources with Terraform Import](#fix-missing-resources-with-terraform-import)
+    - [Fix Manual Configuration](#fix-manual-configuration)
+  - [Fix using Terraform Refresh](#fix-using-terraform-refresh)
+  - [Terraform Modules](#terraform-modules)
+    - [Terraform Module Structure](#terraform-module-structure)
+    - [Passing Input Variables](#passing-input-variables)
+    - [Modules Sources](#modules-sources)
+  - [Consideration when using ChatGPT to write Terraform](#consideration-when-using-chatgpt-to-write-terraform)
+  - [Working with Files in Terraform](#working-with-files-in-terraform)
+    - [Fileexist Function](#fileexist-function)
+    - [Filemd5](#filemd5)
+    - [Path Variable](#path-variable)
+  - [Terraform Locals](#terraform-locals)
+    - [Terraform Data Sources](#terraform-data-sources)
+  - [Working with JSON](#working-with-json)
+    - [Changing the Lifecycle of Resources](#changing-the-lifecycle-of-resources)
+  - [Terraform Data](#terraform-data)
+  - [Provisioners](#provisioners)
+    - [Local-exec](#local-exec)
+    - [Remote-exec](#remote-exec)
+  - [For Each Expressions](#for-each-expressions)
 
 ## Fixing Tags
 
@@ -144,7 +145,7 @@ Terraform loads variables in the following order, with later sources taking prec
 
 If you loose your statefile, you most likley have to tear down all your cloud infrastructure manually.
 
-You can use `terraform import` but it won't for all cloud resources. You need to check the terraform providers documentation for which resources support import.
+You can use `terraform import` but it won't work for all cloud resources. You need to check the terraform providers documentation for which resources support import.
 
 
 ### Fix Missing Resources with Terraform Import
@@ -176,7 +177,7 @@ It is recommended to place modules in a `modules` directory when locally develop
 
 ### Passing Input Variables
 
-Here we can pass input variables to our module. 
+Here we can pass input variables to our module.
 The module has to declare the terraform variables in its own variables.tf
 
 ```tf
@@ -190,7 +191,7 @@ module "terrahouse_aws" {
 
 ### Modules Sources
 
-Using the source we can import the module form various places eg: 
+Using the source we can import the module form various places eg:
 - locally
 - Github
 - Terraform Registry
@@ -233,6 +234,8 @@ variable "index_html_file_path" {
 ### Filemd5
 
 Hashes the contents of a given file rather than a literal string.
+
+An `etag` is a hash of a file and it will tell if a file have changed.
 
 [Filemd5](https://developer.hashicorp.com/terraform/language/functions/filemd5)
 
@@ -296,6 +299,8 @@ We use the jsoncode to create the json policy inline in the hcl
 
 
 ### Changing the Lifecycle of Resources
+
+The `Lifecycle` tells Terraform what to do when the file is changed (etag) to get controll over when to refresh. This is now controlled by version numbers.
 
 [Meta arguments Lifecycle](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle)
 
