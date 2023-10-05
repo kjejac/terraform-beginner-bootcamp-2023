@@ -2,7 +2,8 @@
 resource "aws_s3_bucket" "website_bucket" {
   # Bucket naming rules
   # https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html?icmpid=docs_amazons3_console
-  bucket = var.bucket_name
+  # we want to assign a random bucket name (aws will do that if no name is provided)
+  #bucket = var.bucket_name
 
    tags = {
    UserUuid = var.user_uuid
