@@ -61,3 +61,23 @@ Terraform Provider resources utilize CRUD.
 CRUD stands for Create, Read, Update, and Delete.
 
 [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete)
+
+## Terrahouse AWS
+
+```tf
+# House 1
+module "home_nature" {
+  source = "./modules/terrahome_aws"
+  # env vars
+  user_uuid = var.teacherseat_user_uuid
+  public_path = var.nature_public_path
+  content_version = var.content_version
+}
+```
+
+The public directory expects the following:
+- index.html
+- error.html
+- assets/
+
+All top level files in assets will be copied, but not any subdirectories.

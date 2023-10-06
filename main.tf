@@ -5,12 +5,12 @@ terraform {
       version = "1.0.0"
     }
   }
-#  cloud {
-#    organization = "kjejac"
-#    workspaces {
-#      name = "terra-house-1"
-#    }
-#  }
+  cloud {
+    organization = "kjejac"
+    workspaces {
+      name = "terra-house-1"
+    }
+  }
 }
 
 # local test server setup
@@ -27,23 +27,41 @@ provider "terratowns" {
   token = var.terratowns_access_token
 }
 
-module "terrahouse_aws" {
-  source = "./modules/terrahouse_aws"
+# House 1
+module "home_nature_hosting" {
+  source = "./modules/terrahome_aws"
   # env vars
   user_uuid = var.teacherseat_user_uuid
-  error_html_file_path = var.error_html_file_path
-  index_html_file_path = var.index_html_file_path
-  content_version = var.content_version
-  assets_path = var.assets_path
+  public_path = var.nature.public_path
+  content_version = var.nature.content_version
 }
 
-resource "terratowns_home" "Home" {
+resource "terratowns_home" "home_nature" {
   name = "Random flowers"
   description = <<DESCRIPTION
 Random flowers and nature for testing.
 DESCRIPTION
-  domain_name = module.terrahouse_aws.cloudfront_url
+  domain_name = module.home_nature_hosting.domain_name
   #domain_name = "af4325gd.cloudfront.net"
   town = "missingo"
-  content_version = 1
+  content_version = var.nature.content_version
+}
+
+# House 2
+module "home_food_hosting" {
+  source = "./modules/terrahome_aws"
+  # env vars
+  user_uuid = var.teacherseat_user_uuid
+  public_path = var.food.public_path
+  content_version = var.food.content_version
+}
+resource "terratowns_home" "home_food" {
+  name = "Tasty food"
+  description = <<DESCRIPTION
+Random pictures of food that tastes good.
+DESCRIPTION
+  domain_name = module.home_food_hosting.domain_name
+  #domain_name = "af4325gd.cloudfront.net"
+  town = "missingo"
+  content_version = var.food.content_version
 }
