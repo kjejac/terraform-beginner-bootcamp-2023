@@ -37,13 +37,13 @@ module "home_nature_hosting" {
 }
 
 resource "terratowns_home" "home_nature" {
-  name = "Random flowers"
+  name = "Camping Trip to Hoyvatnet"
   description = <<DESCRIPTION
-Random flowers and nature for testing.
+Slideshow from a camping trip.
 DESCRIPTION
   domain_name = module.home_nature_hosting.domain_name
   #domain_name = "af4325gd.cloudfront.net"
-  town = "missingo"
+  town = "the-nomad-pad"
   content_version = var.nature.content_version
 }
 
@@ -58,10 +58,10 @@ module "home_food_hosting" {
 resource "terratowns_home" "home_food" {
   name = "Tasty food"
   description = <<DESCRIPTION
-Random pictures of food that tastes good.
+Recipe for Pad Kana Moo Krob.
 DESCRIPTION
   domain_name = module.home_food_hosting.domain_name
   #domain_name = "af4325gd.cloudfront.net"
-  town = "missingo"
+  town = "cooker-cove"
   content_version = var.food.content_version
 }

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         * {
@@ -140,7 +141,7 @@
     <div class="mySlides fade">
         <div class="numbertext">3 / 8</div>
         <img src="assets/3.jpg" style="width:100%">
-        <div class="text">The beautiful H&oslashyvatnet, located in Lom, Norway</div>
+        <div class="text">The beautiful H&oslash;yvatnet, located in Lom, Norway</div>
     </div>
 
     <div class="mySlides fade">
@@ -173,8 +174,8 @@
         <div class="text">Dogs getting their dinner.</div>
     </div>
 
-    <a class="prev" onclick="plusSlides(-1)">❮</a>
-    <a class="next" onclick="plusSlides(1)">❯</a>
+    <a class="prev" onclick="plusSlides(-1)">&lt;</a>
+    <a class="next" onclick="plusSlides(1)">&gt;</a>
 
 </div>
 <br>
@@ -183,6 +184,20 @@
     <span class="dot" onclick="currentSlide(1)"></span>
     <span class="dot" onclick="currentSlide(2)"></span>
     <span class="dot" onclick="currentSlide(3)"></span>
+</div>
+
+<div style="text-align: center">
+    <h1>Trip to H&oslash;yvatnet</h1>
+    </br>
+    Pictures taken from a 3 day trip to the beautiful lake H&oslash;yvatnet, located in the municipality of Lom in Norway.
+    <br>
+    <br>
+
+    <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7575.367876295186!2d8.12875225139535!3d61.6622171588786!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4615a88bb70312b3%3A0xa1e08ab3251971d1!2sH%C3%B8ydalsvatnet!5e0!3m2!1sno!2sno!4v1696858804204!5m2!1sno!2sno"
+        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
 </div>
 
 <script>
@@ -212,6 +227,8 @@
         slides[slideIndex - 1].style.display = "block";
         dots[slideIndex - 1].className += " active";
     }
+
+
 </script>
 
 </body>
