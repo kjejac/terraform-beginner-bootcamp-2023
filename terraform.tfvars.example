@@ -1,9 +1,9 @@
 terratowns_endpoint="https://terratowns.cloud/api"
 nature = {
-    nature_public_path = "/workspace/terraform-beginner-bootcamp-2023/public/nature"
+    public_path = "/workspace/terraform-beginner-bootcamp-2023/public/nature"
     content_version = 1
 }
 food = {
-    food_public_path = "/workspace/terraform-beginner-bootcamp-2023/public/food"
+    public_path = "/workspace/terraform-beginner-bootcamp-2023/public/food"
     content_version = 1
 }

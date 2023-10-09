@@ -3,16 +3,234 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nature</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            box-sizing: border-box
+        }
+    
+        body {
+            font-family: Verdana, sans-serif;
+            margin: 0
+        }
+    
+        .mySlides {
+            display: none
+        }
+    
+        img {
+            vertical-align: middle;
+        }
+    
+        /* Slideshow container */
+        .slideshow-container {
+            max-width: 1000px;
+            position: relative;
+            margin: auto;
+        }
+    
+        /* Next & previous buttons */
+        .prev,
+        .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+        }
+    
+        /* Position the "next button" to the right */
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+    
+        /* On hover, add a black background color with a little bit see-through */
+        .prev:hover,
+        .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+    
+        /* Caption text */
+        .text {
+            color: #f2f2f2;
+            font-size: 15px;
+            padding: 8px 12px;
+            position: absolute;
+            bottom: 8px;
+            width: 100%;
+            text-align: center;
+        }
+    
+        /* Number text (1/3 etc) */
+        .numbertext {
+            color: #f2f2f2;
+            font-size: 12px;
+            padding: 8px 12px;
+            position: absolute;
+            top: 0;
+        }
+    
+        /* The dots/bullets/indicators */
+        .dot {
+            cursor: pointer;
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+    
+        .active,
+        .dot:hover {
+            background-color: #717171;
+        }
+    
+        /* Fading animation */
+        .fade {
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+    
+        @keyframes fade {
+            from {
+                opacity: .4
+            }
+    
+            to {
+                opacity: 1
+            }
+        }
+    
+        /* On smaller screens, decrease text size */
+        @media only screen and (max-width: 300px) {
+    
+            .prev,
+            .next,
+            .text {
+                font-size: 11px
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <h1>Hello there Terraformers!</h1>
-    <P>Welcome to the Terraform Bootcamp!</P>
-    
-    <img src="./assets/DSCF1489_1.jpg"  width="100%">
-    <img src="./assets/DSCF1526.jpg"  width="100%">
+<div class="slideshow-container">
+
+    <div class="mySlides fade">
+        <div class="numbertext">1 / 8</div>
+        <img src="assets/1.jpg" style="width:100%">
+        <div class="text">Getting ready for a walk.</div>
+    </div>
+
+    <div class="mySlides fade">
+        <div class="numbertext">2 / 8</div>
+        <img src="assets/2.jpg" style="width:100%">
+        <div class="text">Red dot - our home from home.</div>
+    </div>
+
+    <div class="mySlides fade">
+        <div class="numbertext">3 / 8</div>
+        <img src="assets/3.jpg" style="width:100%">
+        <div class="text">The beautiful H&oslash;yvatnet, located in Lom, Norway</div>
+    </div>
+
+    <div class="mySlides fade">
+        <div class="numbertext">4 / 8</div>
+        <img src="assets/4.jpg" style="width:100%">
+        <div class="text">Glacial green colored water</div>
+    </div>
+
+    <div class="mySlides fade">
+        <div class="numbertext">5 / 8</div>
+        <img src="assets/5.jpg" style="width:100%">
+        <div class="text">Hiking.</div>
+    </div>
+
+    <div class="mySlides fade">
+        <div class="numbertext">6 / 8</div>
+        <img src="assets/6.jpg" style="width:100%">
+        <div class="text">Glacial green water.</div>
+    </div>
+
+    <div class="mySlides fade">
+        <div class="numbertext">7 / 8</div>
+        <img src="assets/7.jpg" style="width:100%">
+        <div class="text"></div>
+    </div>
+
+    <div class="mySlides fade">
+        <div class="numbertext">8 / 8</div>
+        <img src="assets/8.jpg" style="width:100%">
+        <div class="text">Dogs getting their dinner.</div>
+    </div>
+
+    <a class="prev" onclick="plusSlides(-1)">&lt;</a>
+    <a class="next" onclick="plusSlides(1)">&gt;</a>
+
+</div>
+<br>
+
+<div style="text-align:center">
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
+</div>
+
+<div style="text-align: center">
+    <h1>Trip to H&oslash;yvatnet</h1>
+    </br>
+    Pictures taken from a 3 day trip to the beautiful lake H&oslash;yvatnet, located in the municipality of Lom in Norway.
+    <br>
+    <br>
+
+    <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7575.367876295186!2d8.12875225139535!3d61.6622171588786!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4615a88bb70312b3%3A0xa1e08ab3251971d1!2sH%C3%B8ydalsvatnet!5e0!3m2!1sno!2sno!4v1696858804204!5m2!1sno!2sno"
+        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+</div>
+
+<script>
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let dots = document.getElementsByClassName("dot");
+        if (n > slides.length) { slideIndex = 1 }
+        if (n < 1) { slideIndex = slides.length }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+    }
+
+
+</script>
+
 </body>
 
 </html>
