@@ -1,36 +1,37 @@
 # Terraform Beginner Bootcamp 2023 - Week 0
 
-- [Semantic versioning](#semantic-versioning)
-- [Install the Terraform CLI](#install-the-terraform-cli)
-  * [Considerations with the Terraform CLI changes](#considerations-with-the-terraform-cli-changes)
-  * [Considerations for Linux distribution](#considerations-for-linux-distribution)
-  * [Refactoring into Bash scripts](#refactoring-into-bash-scripts)
-    + [Shebang considerations](#shebang-considerations)
-    + [Execution considerations](#execution-considerations)
-    + [Linux permissions considerations](#linux-permissions-considerations)
-- [Gitpod lifecycle](#gitpod-lifecycle)
-- [Working with environment variables](#working-with-environment-variables)
-  * [env command](#env-command)
-  * [Setting and Unsetting Env Vars](#setting-and-unsetting-env-vars)
-  * [Printing Vars](#printing-vars)
-  * [Scoping of env vars](#scoping-of-env-vars)
-  * [Persisting env vars in Gitpod](#persisting-env-vars-in-gitpod)
-- [AWS CLI installation](#aws-cli-installation)
-  * [AWS credentials](#aws-credentials)
-- [Terraform Basic](#terraform-basic)
-  * [Terraform Registry](#terraform-registry)
-  * [Terraform Console](#terraform-console)
-    + [Terraform Init](#terraform-init)
-    + [Terraform Plan](#terraform-plan)
-    + [Terraform Apply](#terraform-apply)
-    + [Terraform destroy](#terraform-destroy)
-    + [Terraform Output](#terraform-output)
-  * [Terraform lock files](#terraform-lock-files)
-  * [Terraform statefiles](#terraform-statefiles)
-  * [Terraform directory](#terraform-directory)
-- [Issues Terraform Cloud Login and Gitpod Workspace.](#issues-terraform-cloud-login-and-gitpod-workspace)
+- [Terraform Beginner Bootcamp 2023 - Week 0](#terraform-beginner-bootcamp-2023---week-0)
+  - [Semantic versioning](#semantic-versioning)
+  - [Install the Terraform CLI](#install-the-terraform-cli)
+    - [Considerations with the Terraform CLI changes](#considerations-with-the-terraform-cli-changes)
+    - [Considerations for Linux distribution](#considerations-for-linux-distribution)
+    - [Refactoring into Bash scripts](#refactoring-into-bash-scripts)
+      - [Shebang considerations](#shebang-considerations)
+      - [Execution considerations](#execution-considerations)
+      - [Linux permissions considerations](#linux-permissions-considerations)
+  - [Gitpod lifecycle](#gitpod-lifecycle)
+  - [Working with environment variables](#working-with-environment-variables)
+    - [env command](#env-command)
+    - [Setting and Unsetting Env Vars](#setting-and-unsetting-env-vars)
+    - [Printing Vars](#printing-vars)
+    - [Scoping of env vars](#scoping-of-env-vars)
+    - [Persisting env vars in Gitpod](#persisting-env-vars-in-gitpod)
+  - [AWS CLI installation](#aws-cli-installation)
+    - [AWS credentials](#aws-credentials)
+  - [Terraform Basic](#terraform-basic)
+    - [Terraform Registry](#terraform-registry)
+    - [Terraform Console](#terraform-console)
+      - [Terraform Init](#terraform-init)
+      - [Terraform Plan](#terraform-plan)
+      - [Terraform Apply](#terraform-apply)
+      - [Terraform destroy](#terraform-destroy)
+      - [Terraform Output](#terraform-output)
+    - [Terraform lock files](#terraform-lock-files)
+    - [Terraform statefiles](#terraform-statefiles)
+    - [Terraform directory](#terraform-directory)
+  - [Issues Terraform Cloud Login and Gitpod Workspace.](#issues-terraform-cloud-login-and-gitpod-workspace)
 
-  
+
 ## Semantic versioning
 This project is going to utilize semantic versioning for its tagging.
 
@@ -52,7 +53,7 @@ The Terraform CLI installation instructions have changed due to gpg keyring chan
 
 Example of checking OS version
 ```bash
-$ cat /etc/os-release 
+$ cat /etc/os-release
 PRETTY_NAME="Ubuntu 22.04.3 LTS"
 NAME="Ubuntu"
 VERSION_ID="22.04"
@@ -69,7 +70,7 @@ UBUNTU_CODENAME=jammy
 
 ### Considerations for Linux distribution
 
-This project is built against Ubuntu. 
+This project is built against Ubuntu.
 Please consider checking your Linux distribution and change accordingly to distribution needs.
 [How to check OS version in Linux](https://www.cyberciti.biz/faq/how-to-check-os-version-in-linux-command-line/)
 
@@ -95,6 +96,7 @@ ChatGPT recommended this format for bash:
 
 https://en.wikipedia.org/wiki/Shebang_(Unix)
 
+_This project have used both formats and should probably be changed to only use one of them._
 
 #### Execution considerations
 When executing the bash script we can use the `./` shorthand notation to execute the bash script.
@@ -111,7 +113,7 @@ In order to make the bash script executable it we need to change the Linux permi
 ```bash
 chmod u+x ./bin/install_terraform_cli.sh
 ```
-Alternatively: 
+Alternatively:
 ```bash
 chmod 744 ./bin/install_terraform_cli.sh
 ```
@@ -199,7 +201,7 @@ If it is succesful you should se a json payload return that looks like this:
 }
 ```
 
-### AWS credentials 
+### AWS credentials
 _(this is better explained in local notes with pictures)_
 
 We'll need to generate AWS CLI credits from IAM User in order to use AWS CLI.
@@ -210,7 +212,7 @@ go to **`iam`**
 
 Create a **new user**
 
-Add user to a group / create a new group if necessary 
+Add user to a group / create a new group if necessary
 **_Example group have global access, but is not necessary! This will be addressed later in the bootcamp._**
 
 **Create unique users, do not use the same user every time. This gives the option to lock down the permissions for each account.**
@@ -226,8 +228,8 @@ To get _Access keys_ for the created user, click on the user and go to _Access K
 
 Terrform sources their providers and moudles from the Terraform registry which is located at [registry.terraform.io](https://registry.terraform.io/).
 
-- **Providers** is an interface to APIs that will allow you to create resources in Terraform 
-- **MOdules** are a way to make large amount of terraform code modular, portable and shareable 
+- **Providers** is an interface to APIs that will allow you to create resources in Terraform
+- **MOdules** are a way to make large amount of terraform code modular, portable and shareable
 
 [](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string)
 
@@ -250,7 +252,7 @@ We can output this changeset ie. "plan" to be passed to an apply, but often you 
 
 #### Terraform Apply
 
-`terraform apply` will run a plan and pass the changeset to be executed by terraform. Apply should prompt yes or no. 
+`terraform apply` will run a plan and pass the changeset to be executed by terraform. Apply should prompt yes or no.
 
 If we want to automatically approve an apply we can provide the auto approve flag eg. `terraform apply --auto-approve`
 
@@ -266,7 +268,7 @@ To get only the output use `terraform output`
 
 ### Terraform lock files
 
-`.terraform.lock.hcl` contains the locked versioning for the providers or modules that should be used with this project. 
+`.terraform.lock.hcl` contains the locked versioning for the providers or modules that should be used with this project.
 
 The Terraform Lock File **should be committed** to the Version Control System (VSC) eg. Github.
 
@@ -289,7 +291,7 @@ If you lose this file, you lose knowing the state of your infrastructure.
 
 ## Issues Terraform Cloud Login and Gitpod Workspace.
 
-Video have issues when attempting to run `terraform login`. It launches in bash a wiswig view to generate a token. However it didn't work for Andrew. 
+Video have issues when attempting to run `terraform login`. It launches in bash a wiswig view to generate a token. However it didn't work for Andrew.
 _Running the terminal in "fullscreen" (no editor) worked for me._
 
 The workaround is to manually generate a token in Terraform Cloud
@@ -309,7 +311,7 @@ $ open /home/gitpod/.terraform.d/credentials.tfrc.json
       "token": "INSERT TOKEN HERE!"
     }
   }
-}  
+}
 ```
 ```
 

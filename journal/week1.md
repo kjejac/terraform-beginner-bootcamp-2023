@@ -38,12 +38,14 @@
 
 ## Fixing Tags
 
-Local delete tag
+Only use if you need to change the tag position.
+
+Start with deleting the local tag
 ```sh
 git tag -d <tag name>
 ```
 
-Remote delete tag
+Then delete the remote tag
 ```
 git push --delete origin tagname
 ```
