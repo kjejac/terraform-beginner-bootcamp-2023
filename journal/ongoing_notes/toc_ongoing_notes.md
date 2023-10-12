@@ -39,5 +39,4 @@
 - [Diagramming for Terratowns](Week_2/01_Diagramming.md)
 - [Setting up Terratowns' Mock Web Server](Week_2/02_Setting_up_Terratowns_Mock_web_server.md)
 - [Setting Up Skeleton for Custom Terraform Provider](Week_2/03_Setup_skeleton_for_custom_Terraform_provider.md)
-- [Creating Provider Block for Custom Terraform Provider](Week_2/04_Provider_block_for_custom_Terraform_provider.md)
-
+- [Creating Provider Block for Custom Terraform Provider](Week_2/04_Provider_block_for_custom_Terraform_provider.md)gi
