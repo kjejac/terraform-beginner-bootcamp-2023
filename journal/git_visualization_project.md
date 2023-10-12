@@ -4,6 +4,7 @@
   - [Terraform graphical representation](#terraform-graphical-representation)
   - [Git](#git)
     - [Fixing Tags](#fixing-tags)
+    - [Creating branches in the CLI from a ticket](#creating-branches-in-the-cli-from-a-ticket)
 
 ## Terraform graphical representation
 
@@ -75,4 +76,19 @@ git tag -d <tag name>
 Then delete the remote tag
 ```
 git push --delete origin tagname
+```
+
+### Creating branches in the CLI from a ticket
+```git
+git checkout -b 1_semanic_versioning
+```
+The `-b` creates a new branch.
+The `1_semanic_versioning` is the name referring to ticket issue num 1 and ticket description.
+
+To push the new branch use ```git push```
+This will give an error
+
+Push again with
+```git
+git push --set-upstream origin 1_semanitc_versioning
 ```
